@@ -25,42 +25,51 @@ const images = [
 let backwardBtn = document.getElementById('prev');
 let forwardBtn = document.getElementById('next');
 let i = 0;
+const sidebar = [];
+for(let i = 0; i<images.length; i++){
+    sidebar.push(document.getElementById(`sidebar-${i+1}`));
+}
 
 forwardBtn.addEventListener('click', function(){
-    sidebar[i].style.filter = `brightness(50%)`;
-    sidebar[i].style.border = `0px`;
-
-    i++;
-    if(i>images.length-1){
-        i-=images.length;
-    }
+    clearStyle(sidebar[i]);
+    i = forwardCount(i);
     contentChange(i);
 })
 
 backwardBtn.addEventListener('click', function(){
-    sidebar[i].style.filter = `brightness(50%)`;
-    sidebar[i].style.border = `0px`;
-
-    i--;
-    if(i<0){
-        i+=images.length;
-    }
+    clearStyle(sidebar[i]);
+    i = backwardCount(i);
     contentChange(i);
 })
 
-const sidebar = [];
-for(let i = 0; i<5; i++){
-    sidebar.push(document.getElementById(`sidebar-${i+1}`));
-}
-console.log(sidebar);
-
-function contentChange(i){
-    console.log(images[i]);
+function contentChange(index){
+    console.log(images[index]);
 
     document.getElementById('image').src = `./${images[i].image}`;
     document.getElementById('title').innerText = `${images[i].title}`;
     document.getElementById('tagline').innerText = `${images[i].text}`;
 
-    sidebar[i].style.filter = `brightness(100%)`;
-    sidebar[i].style.border = `1px solid white`;
+    sidebar[index].style.filter = `brightness(100%)`;
+    sidebar[index].style.border = `1px solid white`;
+}
+
+function clearStyle(thumbnail){
+    thumbnail.style.filter = `brightness(50%)`;
+    thumbnail.style.border = `0px`;
+}
+
+function backwardCount(counter){
+    counter--;
+    if(counter<0){
+        counter+=images.length;
+    }
+    return counter;
+}
+
+function forwardCount(counter){
+    counter++;
+    if(counter>images.length-1){
+        counter-=images.length;
+    }
+    return counter;
 }
