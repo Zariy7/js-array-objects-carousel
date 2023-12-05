@@ -122,4 +122,5 @@
 
 #sidebar-1{
     filter: brightness(100%);
+    border: 1px solid white;
 }

@@ -28,6 +28,8 @@ let i = 0;
 
 forwardBtn.addEventListener('click', function(){
     sidebar[i].style.filter = `brightness(50%)`;
+    sidebar[i].style.border = `0px`;
+
     i++;
     if(i>images.length-1){
         i-=images.length;
@@ -37,6 +39,8 @@ forwardBtn.addEventListener('click', function(){
 
 backwardBtn.addEventListener('click', function(){
     sidebar[i].style.filter = `brightness(50%)`;
+    sidebar[i].style.border = `0px`;
+
     i--;
     if(i<0){
         i+=images.length;
@@ -58,4 +62,5 @@ function contentChange(i){
     document.getElementById('tagline').innerText = `${images[i].text}`;
 
     sidebar[i].style.filter = `brightness(100%)`;
+    sidebar[i].style.border = `1px solid white`;
 }
