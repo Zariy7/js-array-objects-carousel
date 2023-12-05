@@ -30,17 +30,8 @@ for(let i = 0; i<images.length; i++){
     sidebar.push(document.getElementById(`sidebar-${i+1}`));
 }
 
-forwardBtn.addEventListener('click', function(){
-    clearStyle(sidebar[i]);
-    i = forwardCount(i);
-    contentChange(i);
-})
-
-backwardBtn.addEventListener('click', function(){
-    clearStyle(sidebar[i]);
-    i = backwardCount(i);
-    contentChange(i);
-})
+forwardBtn.addEventListener('click', goForward);
+backwardBtn.addEventListener('click', goBack);
 
 function contentChange(index){
     console.log(images[index]);
@@ -62,18 +53,20 @@ function addStyle(thumbnail){
     thumbnail.style.border = `1px solid white`;
 }
 
-function backwardCount(counter){
-    counter--;
-    if(counter<0){
-        counter+=images.length;
+function goBack(){
+    clearStyle(sidebar[i]);
+    i--;
+    if(i<0){
+        i+=images.length;
     }
-    return counter;
+    contentChange(i);
 }
 
-function forwardCount(counter){
-    counter++;
-    if(counter>images.length-1){
-        counter-=images.length;
+function goForward(){
+    clearStyle(sidebar[i]);
+    i++;
+    if(i>images.length-1){
+        i-=images.length;
     }
-    return counter;
+    contentChange(i);
 }
