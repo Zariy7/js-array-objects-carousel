@@ -49,13 +49,17 @@ function contentChange(index){
     document.getElementById('title').innerText = `${images[i].title}`;
     document.getElementById('tagline').innerText = `${images[i].text}`;
 
-    sidebar[index].style.filter = `brightness(100%)`;
-    sidebar[index].style.border = `1px solid white`;
+    addStyle(sidebar[index]);
 }
 
 function clearStyle(thumbnail){
     thumbnail.style.filter = `brightness(50%)`;
     thumbnail.style.border = `0px`;
+}
+
+function addStyle(thumbnail){
+    thumbnail.style.filter = `brightness(100%)`;
+    thumbnail.style.border = `1px solid white`;
 }
 
 function backwardCount(counter){
