@@ -28,21 +28,24 @@ let i = 0;
 
 forwardBtn.addEventListener('click', function(){
     i++;
-    contentChange();
+    if(i>images.length-1){
+        i-=images.length;
+    }
+    contentChange(i);
 })
 
 backwardBtn.addEventListener('click', function(){
     i--;
-    contentChange();
+    if(i<0){
+        i+=images.length;
+    }
+    contentChange(i);
 })
 
-function contentChange(){
-    console.log(images[i].image);
+function contentChange(i){
+    console.log(images[i]);
+
     document.getElementById('image').src = `./${images[i].image}`;
-
-    console.log(images[i].title);
     document.getElementById('title').innerText = `${images[i].title}`;
-
-    console.log(images[i].text);
     document.getElementById('tagline').innerText = `${images[i].text}`;
 }
