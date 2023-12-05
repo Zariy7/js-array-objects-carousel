@@ -27,6 +27,7 @@ let forwardBtn = document.getElementById('next');
 let i = 0;
 
 forwardBtn.addEventListener('click', function(){
+    sidebar[i].style.filter = `brightness(50%)`;
     i++;
     if(i>images.length-1){
         i-=images.length;
@@ -35,6 +36,7 @@ forwardBtn.addEventListener('click', function(){
 })
 
 backwardBtn.addEventListener('click', function(){
+    sidebar[i].style.filter = `brightness(50%)`;
     i--;
     if(i<0){
         i+=images.length;
@@ -42,10 +44,18 @@ backwardBtn.addEventListener('click', function(){
     contentChange(i);
 })
 
+const sidebar = [];
+for(let i = 0; i<5; i++){
+    sidebar.push(document.getElementById(`sidebar-${i+1}`));
+}
+console.log(sidebar);
+
 function contentChange(i){
     console.log(images[i]);
 
     document.getElementById('image').src = `./${images[i].image}`;
     document.getElementById('title').innerText = `${images[i].title}`;
     document.getElementById('tagline').innerText = `${images[i].text}`;
+
+    sidebar[i].style.filter = `brightness(100%)`;
 }

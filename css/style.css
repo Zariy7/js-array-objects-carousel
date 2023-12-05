@@ -119,3 +119,7 @@
     object-fit: cover;
     filter: brightness(50%);
 }
+
+#sidebar-1{
+    filter: brightness(100%);
+}
