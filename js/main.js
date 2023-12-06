@@ -74,7 +74,25 @@ function goForward(){
 let backwardCycleBtn = document.getElementById('forward-cycle');
 let stopCycleBtn = document.getElementById('stop-cycle');
 let forwardCycleBtn = document.getElementById('backward-cycle');
+let cycle;
+let cycleGoes = false;
 
-backwardCycleBtn.addEventListener('click', () => alert('Backcycle Clicked!'));
-stopCycleBtn.addEventListener('click', () => alert('Stopcycle Clicked!'));
-forwardCycleBtn.addEventListener('click', () => alert('Fwdcycle Clicked!'));
+backwardCycleBtn.addEventListener('click', function(){
+    if(!cycleGoes){
+        cycleGoes = true;
+        cycle = setInterval(goForward, 1000);
+    }
+});
+
+forwardCycleBtn.addEventListener('click', function(){
+    if(!cycleGoes){
+        cycleGoes = true;
+        cycle = setInterval(goBack, 1000);
+    }
+});
+
+stopCycleBtn.addEventListener('click', function(){
+    cycleGoes = false;
+    clearInterval(cycle);
+})
+
