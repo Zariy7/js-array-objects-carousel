@@ -70,3 +70,11 @@ function goForward(){
     }
     contentChange(i);
 }
+
+let backwardCycleBtn = document.getElementById('forward-cycle');
+let stopCycleBtn = document.getElementById('stop-cycle');
+let forwardCycleBtn = document.getElementById('backward-cycle');
+
+backwardCycleBtn.addEventListener('click', () => alert('Backcycle Clicked!'));
+stopCycleBtn.addEventListener('click', () => alert('Stopcycle Clicked!'));
+forwardCycleBtn.addEventListener('click', () => alert('Fwdcycle Clicked!'));
